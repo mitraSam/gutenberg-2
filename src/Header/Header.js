@@ -13,6 +13,7 @@ const Header = () => {
     `;
     return (
         <header
+            className="wrapper"
             css={css`
                 font-family: var(--id-font);
                 display: flex;
