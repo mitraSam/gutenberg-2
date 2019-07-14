@@ -7,7 +7,8 @@ import {InMemoryCache, HttpLink, ApolloLink, ApolloClient, split} from 'apollo-b
 import {WebSocketLink} from 'apollo-link-ws';
 import {getMainDefinition} from 'apollo-utilities';
 import {createUploadLink} from 'apollo-upload-client';
-
+import Landing from '../Landing/Landing';
+import '../styles/main.scss';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
@@ -59,11 +60,13 @@ const setupAndRender = async () => {
         render() {
             return (
                 <ApolloProvider client={client}>
-                <div>
-                    <h1>hello</h1>
-                </div>
+                    <div>
+                        <Router>
+                            <Landing path="/" />
+                        </Router>
+                    </div>
                 </ApolloProvider>
-        );
+            );
         }
     }
 
