@@ -23,7 +23,7 @@ const Header = () => {
             `}>
             <h1>
                 <Link
-                    tabindex="0"
+                    tabIndex={0}
                     to="/"
                     css={css`
                         color: var(--dark-gray);
