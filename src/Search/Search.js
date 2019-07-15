@@ -24,7 +24,7 @@ export const Search = ({param}) => {
                     return loading ? (
                         <h2>loading</h2>
                     ) : (
-                        <div className="inverse">
+                        <div>
                             {search.length ? (
                                 search.map(book => <Preview key={book.title} title={book.title} author={book.author} />)
                             ) : (

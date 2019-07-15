@@ -32,6 +32,10 @@
   --h1-vf-wght-multiplier-m: 2.25;
   --h1-vf-wght-multiplier-l: 2.5;
   --h1-vf-wdth: 100;
+  --h1-YTLC:500;
+  --h1-YTAS:680;
+  --h1-YTDE:190;
+  --h1-YTUC:720;
   /* H2 variables */
   --h2-line-height-min: 1.15;
   --h2-line-height-max: 1.25;
@@ -116,7 +120,12 @@ h2 {
   font-size: calc( var(--h2-font-size-min) * 1em);
   font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h2-vf-wght-multiplier-s)), "wdth" calc( var(--h2-vf-wdth) * .80), "opsz" calc( var(--h2-font-size-min) * 16), "GRAD" var(--text-GRAD);
   line-height: var(--h2-line-height-min);
-  max-width: 50rem; }
+  max-width: 50rem;
+&:hover{
+  --text-GRAD: 215;
+
+}
+}
 .inverse h2 {
   --text-GRAD: 100; }
 @media screen and (min-width: 24.15em) {
@@ -141,27 +150,46 @@ h2 {
 
 h1, .title {
   font-size: calc( var(--h1-font-size-min) * 1em);
-  font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-s)), "wdth" calc( var(--h1-vf-wdth) * .75), "YTLC" 500, "YTAS" 680, "YTDE" 190, "YTUC" 720, "opsz" calc( var(--h1-font-size-min) * 16), "GRAD" var(--text-GRAD);
+  font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-s)), "wdth" calc( var(--h1-vf-wdth) * .75), "YTLC" var(--h1-YTLC), "YTAS" var(--h1-YTAS), "YTDE" var(--h1-YTDE), "YTUC" var(--h1-YTUC), "opsz" calc( var(--h1-font-size-min) * 16), "GRAD" var(--text-GRAD);
   line-height: var(--h1-line-height-min);
-  max-width: 50rem; }
-.inverse h1 {
-  --text-GRAD: 100; }
+  max-width: 50rem;
+  &:hover{
+    --text-GRAD: 150;
+    --h1-YTLC: 600;
+  }
+}
+
 @media screen and (min-width: 24.15em) {
   h1,.title {
     line-height: calc(( var(--h1-line-height-min) * 1em ) + ( var(--h1-line-height-max) - var(--h1-line-height-min) ) * ((100vw - ( var(--bp-small) * 1em )) / ( var(--bp-xlarge) - var(--bp-small) )));
     font-size: calc(( var(--h1-font-size-min) * 1em ) + ( var(--h1-font-size-max) - var(--h1-font-size-min) ) * ((100vw - ( var(--bp-small) * 1em )) / ( var(--bp-large) - var(--bp-small) ))); } }
 @media screen and (min-width: 43.75em) {
   h1,.title {
-    font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-m)), "wdth" calc( var(--h1-vf-wdth) * .82), "YTLC" 500, "YTAS" 715, "YTDE" 190, "YTUC" 735, "opsz" calc( ( (( var(--h1-font-size-max) - var(--h1-font-size-min) ) / 2 ) + var(--h1-font-size-min) ) * 16), "GRAD" var(--text-GRAD);
+    --h1-YTAS:715;
+    --h1-YTUC:735;
+    font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-m)), "wdth" calc( var(--h1-vf-wdth) * .82),"YTLC" var(--h1-YTLC), "YTAS" var(--h1-YTAS), "YTDE" var(--h1-YTDE), "YTUC" var(--h1-YTUC), "opsz" calc( ( (( var(--h1-font-size-max) - var(--h1-font-size-min) ) / 2 ) + var(--h1-font-size-min) ) * 16), "GRAD" var(--text-GRAD);
     max-width: 60rem; } }
 @media screen and (min-width: 60.25em) {
   h1,.title {
-    font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-l)), "wdth" calc( var(--h1-vf-wdth) * .94), "YTLC" 500, "YTAS" 730, "YTDE" 220, "YTUC" 750, "opsz" calc( ( (( var(--h1-font-size-max) - var(--h1-font-size-min) ) / 2 ) + var(--h1-font-size-min) ) * 16), "GRAD" var(--text-GRAD);
+    --h1-YTAS:730;
+    --h1-YTDE:220;
+    --h1-YTUC:750;
+
+    font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-l)), "wdth" calc( var(--h1-vf-wdth) * .94), "YTLC" var(--h1-YTLC), "YTAS" var(--h1-YTAS), "YTDE" var(--h1-YTDE), "YTUC" var(--h1-YTUC), "opsz" calc( ( (( var(--h1-font-size-max) - var(--h1-font-size-min) ) / 2 ) + var(--h1-font-size-min) ) * 16), "GRAD" var(--text-GRAD);
     line-height: var(--h1-line-height-max);
     max-width: 70rem; } }
 @media (min-width: 75em) {
   h1,.title {
+    transition: all linear .5s;
+
+    --h1-YTAS:750;
+    --h1-YTDE:250;
+    --h1-YTUC:750;
+    &:hover{
+      --h1-YTDE:550;
+
+    }
     font-size: calc( var(--h1-font-size-max) * 1em);
-    font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-l)), "wdth" calc( var(--h1-vf-wdth) * 1), "YTLC" 500, "YTAS" 750, "YTDE" 250, "YTUC" 750, "opsz" calc( var(--h1-font-size-max) * 16), "GRAD" var(--text-GRAD);
+    font-variation-settings: "wght" calc( var(--p-vf-wght) * var(--h1-vf-wght-multiplier-l)), "wdth" calc( var(--h1-vf-wdth) * 1), "YTLC" var(--h1-YTLC), "YTAS" var(--h1-YTAS), "YTDE" var(--h1-YTDE), "YTUC" var(--h1-YTUC), "opsz" calc( var(--h1-font-size-max) * 16), "GRAD" var(--text-GRAD);
     line-height: var(--h1-line-height-max);
     max-width: 75rem; } }
