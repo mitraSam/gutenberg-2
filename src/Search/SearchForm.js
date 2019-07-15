@@ -1,24 +1,21 @@
 import React, {useState} from 'react';
 import {css} from '@emotion/core';
-import {Query} from 'react-apollo';
-import {SEARCH_QUERY} from '../Queries';
+
 import {navigate} from '@reach/router';
 
-const NavForm = () => {
+const NavForm = ({update, onSubmit}) => {
     const [searchTerm, updateSearchTerm] = useState('');
     function handleSearch(e) {
         e.preventDefault();
+        onSubmit ? onSubmit() : null;
+        navigate(`/search/${searchTerm}`);
     }
     return (
-        <form
-            onSubmit={e => {
-                e.preventDefault();
-                navigate(`/search/${searchTerm}`);
-            }}>
+        <form onSubmit={handleSearch}>
             <input
                 tabIndex={1}
-                onFocus={e => e.currentTarget.parentNode.parentNode.classList.add('active')}
-                onBlur={e => e.currentTarget.parentNode.parentNode.classList.remove('active')}
+                onFocus={() => (update ? update(true) : null)}
+                onBlur={() => (update ? update(false) : null)}
                 css={css`
                     font-family: var(--id-font);
                     font-size: 1em;

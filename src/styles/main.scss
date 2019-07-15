@@ -4,6 +4,7 @@
 :root {
   --dark-gray: #3c3d31;
   --imperial-red:#ED2939;
+  --off-white:  #fbfbf6;
   --action-color: var(--imperial-red);
   --id-font: "Zeit", "New Times Roman", serif;
   --main-font:"Amstelvar 1.1 VF", Georgia, "New Times Roman", serif;
@@ -59,7 +60,7 @@ $bp-medium: 43.75;
 html{
   font-size: 100%;
   font-family: var(--main-font);
-  background-color: #fbfbf6;
+  background-color: var(--off-white);
 
 }
 button{
@@ -104,7 +105,7 @@ ul{
 
 @media only screen and (min-width: 75em) {
   .wrapper {
-    max-width: 98em; } }
+    max-width: 90em; } }
 
 h1, h2,h2, h3, h4, h5, h6 {
   font-weight: normal;

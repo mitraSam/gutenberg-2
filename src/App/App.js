@@ -8,10 +8,11 @@ import {WebSocketLink} from 'apollo-link-ws';
 import {getMainDefinition} from 'apollo-utilities';
 import {createUploadLink} from 'apollo-upload-client';
 import '../styles/main.scss';
-import {Search} from '../Search';
+import {Search} from '../Search/Search';
 import Header from '../Header/Header';
 import NotFound from '../NotFound/NotFound';
 import Main from '../Main/Main';
+import Landing from '../Landing/Landing';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
@@ -72,6 +73,7 @@ const setupAndRender = async () => {
                         <Router>
                             <Main path="/">
                                 <Search path="/search/:param" />
+                                <Landing path="/" />
                                 <NotFound default />
                             </Main>
                         </Router>

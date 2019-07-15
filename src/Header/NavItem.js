@@ -1,22 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {css} from '@emotion/core';
 import {Link} from '@reach/router';
-import NavForm from './NavForm';
+import SearchForm from '../Search/SearchForm';
 
-const NavItem = ({link}) => {
-    function setActive(e) {
-        e.currentTarget.parentNode.classList.add('active');
-    }
-    function unsetActive(e) {
-        console.log(e.currentTarget.parentNode);
-        e.currentTarget.parentNode.classList.remove('active');
-    }
+const NavItem = ({link, updateNavState}) => {
+    const [linkState, updateLinkState] = useState(false);
+
+    const activeItem = css`
+        &::after {
+            width: 100%;
+        }
+    `;
     const navItem = css`
         border-bottom: 1px solid var(--action-color);
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
         &:after {
             content: '';
+
             display: block;
             width: 0;
             height: 1px;
@@ -28,10 +29,13 @@ const NavItem = ({link}) => {
             opacity: 1;
             display: inline-block;
             border: none;
-            &:hover::after,
-            &.active::after {
+            margin-right: 1.3em;
+
+            &:hover::after {
                 width: 100%;
             }
+            ${linkState ? activeItem : ''}
+
             &:first-of-type {
                 margin-right: 0;
             }
@@ -47,16 +51,18 @@ const NavItem = ({link}) => {
     return (
         <li
             css={css`
-                order: ${3 - link.i};
+                order: ${link.totalLinks - link.i};
                 ${navItem};
-                @media (min-width: 60.25em) {
-                    margin-right: 1.3em;
-                }
             `}>
             {link.name === 'search' ? (
-                <NavForm></NavForm>
+                <SearchForm update={updateLinkState} onSubmit={() => updateNavState(false)}></SearchForm>
             ) : (
-                <Link tabIndex={3 - link.i} onFocus={setActive} onBlur={unsetActive} to={`/${link.name}`} css={navLink}>
+                <Link
+                    tabIndex={link.totalLinks - link.i}
+                    onFocus={() => updateLinkState(true)}
+                    onBlur={() => updateLinkState(false)}
+                    to={`/${link.name}`}
+                    css={navLink}>
                     {link.name}
                 </Link>
             )}

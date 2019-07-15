@@ -8,6 +8,14 @@ export const SEARCH_QUERY = gql`
         }
     }
 `;
+export const RECENT_BOOKS = gql`
+    query recentBooks {
+        recentBooks {
+            title
+            author
+        }
+    }
+`;
 
 export const GET_BOOK_DETAILS = gql`
     query bookDetails($title: String!) {

@@ -21,6 +21,10 @@ const Header = () => {
                 align-items: center;
                 justify-content: space-between;
                 position: relative;
+                margin-bottom: 2em;
+                @media (min-width: 75em) {
+                    margin-bottom: 3em;
+                }
             `}>
             <h1>
                 <Link
@@ -60,7 +64,7 @@ const Header = () => {
                 onClick={() => updateNavState(!navState)}>
                 m
             </button>
-            <Nav active={navState} />
+            <Nav navState={navState} updateNavState={updateNavState} />
         </header>
     );
 };

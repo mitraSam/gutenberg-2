@@ -4,21 +4,34 @@ import {css} from '@emotion/core';
 
 const Preview = ({title, author}) => (
     <div>
-        <h2
-            className="title"
+        <Link
+            to={`${title}/details`}
             css={css`
-                margin-bottom: 0.3em;
-                line-height: 1.3;
+                border-bottom: 1px solid var(--action-color);
+                display: block;
+                @media (min-width: 60.25em) {
+                    width: 52em;
+                }
+                @media (min-width: 75em) {
+                    width: 64em;
+                }
             `}>
-            <Link
+            <h2
+                className="title"
                 css={css`
-                    border-bottom: 1px solid var(--action-color);
-                `}
-                to={`${title}/details`}>
+                    margin-bottom: 0em;
+                    line-height: 1.3;
+                    margin-top: 0.5em;
+                `}>
                 {title}
-            </Link>
-        </h2>
-        <h2>by {author}</h2>
+            </h2>
+            <h2
+                css={css`
+                    margin-top: 0;
+                `}>
+                by {author}
+            </h2>
+        </Link>
     </div>
 );
 

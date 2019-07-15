@@ -16,6 +16,7 @@
     "apollo-cache-persist": "^0.1.1",
     "apollo-link-ws": "^1.0.18",
     "apollo-upload-client": "^10.0.1",
+    "emotion": "^10.0.14",
     "graphql": "^14.4.2",
     "graphql-request": "^1.8.2",
     "prettier": "^1.18.2",
