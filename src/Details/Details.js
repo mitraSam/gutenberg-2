@@ -3,12 +3,9 @@ import {Query} from 'react-apollo';
 import {css} from '@emotion/core';
 import {Link} from '@reach/router';
 import {GET_BOOK_DETAILS} from '../Queries';
+import Subtitle from '../Subtitle/Subtitle';
 
 const Details = ({title}) => {
-    const subtitle = css`
-        font-family: var(--id-font);
-    `;
-
     return (
         <div
             css={css`
@@ -16,12 +13,7 @@ const Details = ({title}) => {
                     margin-left: 1.4em;
                 }
             `}>
-            <h2
-                css={css`
-                    ${subtitle};
-                `}>
-                book details
-            </h2>
+            <Subtitle text="book details" />
             <Query query={GET_BOOK_DETAILS} variables={{title}} fetchPolicy="network-only">
                 {({data, loading}) => {
                     const {bookDetails} = data;
@@ -45,6 +37,7 @@ const Details = ({title}) => {
                                 `}>
                                 by {author}
                             </h2>
+
                             <Link
                                 to={`/${title}/read`}
                                 className="subtitle"
@@ -63,28 +56,15 @@ const Details = ({title}) => {
                                 `}>
                                 read book
                             </Link>
-                            <h2
-                                css={css`
-                                    ${subtitle};
-                                `}>
-                                from wikipedia
-                            </h2>
+
+                            <Subtitle text="from wikipedia" />
                             <p>{wikiData}</p>
-                            <h2
-                                css={css`
-                                    ${subtitle};
-                                `}>
-                                credits
-                            </h2>
+                            <Subtitle text="credits" />
                             {credits.map(credit => (
                                 <p key={credit}>{credit}</p>
                             ))}
-                            <h2
-                                css={css`
-                                    ${subtitle}
-                                `}>
-                                license
-                            </h2>
+                            <Subtitle text="license" />
+
                             <p>{license}</p>
                             <p>
                                 You can also read the original{' '}
@@ -96,12 +76,8 @@ const Details = ({title}) => {
                                     here
                                 </Link>
                             </p>
-                            <h2
-                                css={css`
-                                    ${subtitle}
-                                `}>
-                                chapters
-                            </h2>
+                            <Subtitle text="chapters" />
+
                             {chapterTitles.map(chTitle => (
                                 <p key={chTitle}>
                                     <Link
