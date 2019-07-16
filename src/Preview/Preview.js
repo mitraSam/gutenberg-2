@@ -5,7 +5,7 @@ import {css} from '@emotion/core';
 const Preview = ({title, author}) => (
     <div>
         <Link
-            to={`${title}/details`}
+            to={`/details/${title}`}
             css={css`
                 border-bottom: 1px solid var(--action-color);
                 display: block;

@@ -13,6 +13,7 @@ import Header from '../Header/Header';
 import NotFound from '../NotFound/NotFound';
 import Main from '../Main/Main';
 import Landing from '../Landing/Landing';
+import Details from '../Details/Details';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
@@ -74,6 +75,7 @@ const setupAndRender = async () => {
                             <Main path="/">
                                 <Search path="/search/:param" />
                                 <Landing path="/" />
+                                <Details path="/details/:title" />
                                 <NotFound default />
                             </Main>
                         </Router>
