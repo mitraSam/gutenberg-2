@@ -19,10 +19,14 @@
     "emotion": "^10.0.14",
     "graphql": "^14.4.2",
     "graphql-request": "^1.8.2",
+    "h": "^1.0.0",
+    "html-react-parser": "^0.9.1",
+    "popmotion": "^8.7.0",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
+    "react-pose": "^4.0.8",
     "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {

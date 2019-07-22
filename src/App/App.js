@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router} from '@reach/router';
+import {Match, Router} from '@reach/router';
 import {ApolloProvider} from 'react-apollo';
 import {persistCache} from 'apollo-cache-persist';
 import {InMemoryCache, HttpLink, ApolloLink, ApolloClient, split} from 'apollo-boost';
@@ -8,12 +8,13 @@ import {WebSocketLink} from 'apollo-link-ws';
 import {getMainDefinition} from 'apollo-utilities';
 import {createUploadLink} from 'apollo-upload-client';
 import '../styles/main.scss';
-import {Search} from '../Search/Search';
-import Header from '../Header/Header';
-import NotFound from '../NotFound/NotFound';
-import Main from '../Main/Main';
-import Landing from '../Landing/Landing';
-import Details from '../Details/Details';
+import Search from '../Search';
+import Header from '../Header';
+import NotFound from '../NotFound';
+import Main from '../Main';
+import Landing from '../Landing';
+import Details from '../Details';
+import Chapter from '../Chapter';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
@@ -67,15 +68,14 @@ const setupAndRender = async () => {
                 <ApolloProvider client={client}>
                     <div>
                         <div>
-                            <Router>
-                                <Header path="/*" />
-                            </Router>
+                            <Match path="/:title/:chapterNr/:pageNr">{props => (props.match ? '' : <Header />)}</Match>
                         </div>
                         <Router>
                             <Main path="/">
                                 <Search path="/search/:param" />
                                 <Landing path="/" />
-                                <Details path="/details/:title" />
+                                <Details path="/:title" />
+                                <Chapter path="/:title/:chapterNr/:pageNr" />
                                 <NotFound default />
                             </Main>
                         </Router>

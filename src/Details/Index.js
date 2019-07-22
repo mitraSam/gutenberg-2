@@ -6,6 +6,7 @@ import {GET_BOOK_DETAILS} from '../Queries';
 import Subtitle from '../Subtitle/Subtitle';
 
 const Details = ({title}) => {
+    console.log(title, 'here');
     return (
         <div
             css={css`
@@ -17,8 +18,8 @@ const Details = ({title}) => {
             <Query query={GET_BOOK_DETAILS} variables={{title}} fetchPolicy="network-only">
                 {({data, loading}) => {
                     const {bookDetails} = data;
-                    console.log(bookDetails);
-                    if (bookDetails) var {title, author, credits, license, url, wikiData, chapterTitles} = bookDetails;
+                    if (bookDetails)
+                        var {title, author, credits, license, source, wikiData, chapterTitles, epigraph} = bookDetails;
                     return loading ? (
                         <h1>ladoing</h1>
                     ) : bookDetails ? (
@@ -37,9 +38,8 @@ const Details = ({title}) => {
                                 `}>
                                 by {author}
                             </h2>
-
                             <Link
-                                to={`/${title}/read`}
+                                to={`/${title}/1/${epigraph ? 0 : 1}`}
                                 className="subtitle"
                                 css={css`
                                     font-family: var(--id-font);
@@ -69,7 +69,7 @@ const Details = ({title}) => {
                             <p>
                                 You can also read the original{' '}
                                 <Link
-                                    to={url}
+                                    to={source}
                                     css={css`
                                         border-bottom: 1px solid var(--action-color);
                                     `}>
@@ -78,13 +78,13 @@ const Details = ({title}) => {
                             </p>
                             <Subtitle text="chapters" />
 
-                            {chapterTitles.map(chTitle => (
+                            {chapterTitles.map((chTitle, i) => (
                                 <p key={chTitle}>
                                     <Link
                                         css={css`
                                             border-bottom: 1px solid var(--action-color);
                                         `}
-                                        to={`${title}/read/${chTitle}`}>
+                                        to={`/${title}/${i + 1}`}>
                                         {chTitle}
                                     </Link>
                                 </p>

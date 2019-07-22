@@ -2,9 +2,9 @@ import React from 'react';
 import {Query} from 'react-apollo';
 import {css} from '@emotion/core';
 import {SEARCH_QUERY} from '../Queries';
-import Preview from '../Preview/Preview';
+import Preview from '../Preview';
 
-export const Search = ({param}) => {
+const Search = ({param}) => {
     return (
         <div
             css={css`
@@ -37,3 +37,4 @@ export const Search = ({param}) => {
         </div>
     );
 };
+export default Search;

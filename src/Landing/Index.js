@@ -2,7 +2,7 @@ import React from 'react';
 import {css} from '@emotion/core';
 import {Query} from 'react-apollo';
 import {RECENT_BOOKS} from '../Queries';
-import Preview from '../Preview/Preview';
+import Preview from '../Preview';
 const Landing = () => (
     <div
         css={css`
