@@ -34,7 +34,7 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                                             css={css`
                                                 position: relative;
                                             `}>
-                                            <Container page={pages[pageNr - 1].content} />
+                                            <Container navigate={navigate} page={pages[pageNr - 1].content} />
                                         </div>
                                     </div>
                                 ) : (

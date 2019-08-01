@@ -1,24 +1,37 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import parse from 'html-react-parser';
 import {css} from '@emotion/core';
 import {Swipeable} from 'react-swipeable';
 
-const Container = ({page}) => {
+const Container = ({page, navigate}) => {
+    const [content, updateContent] = useState(page);
+    useEffect(() => {
+        console.log('usiing effect');
+    }, [page]);
     const [point, updatePoint] = useState(0);
     const [opacity, updateOpacity] = useState(1);
+
     const swipedLeft = ({deltaX}) => {
         const percentage = Math.abs(deltaX) / window.innerWidth;
-        if (percentage < 0.5) {
+        console.log(percentage);
+        if (percentage < 0.2) {
             updatePoint(0);
             updateOpacity(1);
+            return;
         }
+        updatePoint(window.innerWidth);
+        navigate('/BRAVE NEW WORLD/1/3');
     };
     const swipedRight = ({deltaX}) => {
         const percentage = Math.abs(deltaX) / window.innerWidth;
-        if (percentage < 0.5) {
+        console.log(percentage);
+        if (percentage < 0.2) {
             updatePoint(0);
             updateOpacity(1);
+            return;
         }
+        console.log('right', -window.innerWidth);
+        updatePoint(-window.innerWidth);
     };
 
     return (
@@ -35,7 +48,7 @@ const Container = ({page}) => {
                     transition: transform 0.1s;
                     background: var(--off-white);
                 `}>
-                {parse(page)}
+                {parse(content)}
             </div>
         </Swipeable>
     );
