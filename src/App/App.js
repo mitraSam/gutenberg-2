@@ -14,7 +14,7 @@ import NotFound from '../NotFound';
 import Main from '../Main';
 import Landing from '../Landing';
 import Details from '../Details';
-import Chapter from '../Chapter/One';
+import Chapter from '../Chapter';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
