@@ -10,6 +10,10 @@ class SwipeContainer extends Component {
         swipeRight: false,
     };
 
+    componentDidMount() {
+        this.setArrowNav();
+    }
+
     swipeEnd = ({deltaX}) => {
         const percentage = Math.abs(deltaX) / window.innerWidth;
         if (percentage < 0.3) {
@@ -22,6 +26,14 @@ class SwipeContainer extends Component {
             return;
         }
         this.setState({point: -window.innerWidth, swipeLeft: true});
+    };
+
+    setArrowNav = () => {
+        window.onkeydown = evt => {
+            if (evt.key === 'ArrowRight') this.setState({point: window.innerWidth, swipeRight: true});
+
+            if (evt.key === 'ArrowLeft') this.setState({point: -window.innerWidth, swipeLeft: true});
+        };
     };
     transitionEnd = () => {
         const {swipeLeft, swipeRight} = this.state;
