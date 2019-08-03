@@ -30,9 +30,17 @@ class SwipeContainer extends Component {
 
     setArrowNav = () => {
         window.onkeydown = evt => {
-            if (evt.key === 'ArrowRight') this.setState({point: window.innerWidth, swipeRight: true});
+            if (evt.key === 'ArrowRight') {
+                window.scrollTo(0, 0);
 
-            if (evt.key === 'ArrowLeft') this.setState({point: -window.innerWidth, swipeLeft: true});
+                this.setState({point: window.innerWidth, swipeRight: true});
+            }
+
+            if (evt.key === 'ArrowLeft') {
+                window.scrollTo(0, 0);
+
+                this.setState({point: -window.innerWidth, swipeLeft: true});
+            }
         };
     };
     transitionEnd = () => {
@@ -68,6 +76,9 @@ class SwipeContainer extends Component {
                         style={{transform: `translate3d(${point + 'px'},0,0)`, opacity: `${opacity}`}}
                         css={css`
                             transition: transform 0.1s;
+                            @media screen and (min-width: 60.25em) {
+                                transition: transform 0.4s;
+                            }
                             background: var(--off-white);
                         `}
                         onTransitionEnd={this.transitionEnd}>

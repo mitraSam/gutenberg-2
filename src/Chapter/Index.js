@@ -22,10 +22,15 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                                     overflow: hidden;
                                 `}>
                                 {pageNr > 0 ? (
-                                    <div>
+                                    <div
+                                        css={css`
+                                            display: flex;
+                                        `}>
                                         <div
                                             css={css`
                                                 position: relative;
+                                                display: inline-block;
+                                                margin: 0 auto;
                                             `}>
                                             <Container
                                                 key={pageNr}
