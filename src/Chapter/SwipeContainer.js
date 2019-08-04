@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import parse from 'html-react-parser';
-import {css} from '@emotion/core';
 import ActivePage from './ActivePage';
 import InactivePage from './InactivePage';
 class SwipeContainer extends Component {
@@ -15,6 +13,9 @@ class SwipeContainer extends Component {
         this.setArrowNav();
     }
 
+    swipedRight = () => this.setState({point: window.innerWidth, swipeRight: true});
+    swipedLeft = () => this.setState({point: -window.innerWidth, swipeLeft: true});
+
     swipeEnd = ({deltaX}) => {
         const percentage = Math.abs(deltaX) / window.innerWidth;
         if (percentage < 0.3) {
@@ -22,40 +23,43 @@ class SwipeContainer extends Component {
 
             return;
         }
+        window.scrollTo(0, 0);
+
         if (deltaX > 1) {
-            this.setState({point: window.innerWidth, swipeRight: true});
+            this.swipedRight();
             return;
         }
-        this.setState({point: -window.innerWidth, swipeLeft: true});
+        this.swipedLeft();
     };
+    navigateToPage = pageNr => {
+        const {title, chapterNr} = this.props;
 
+        this.props.navigate(`/${title}/${chapterNr}/${pageNr}`);
+    };
     setArrowNav = () => {
-        window.onkeydown = evt => {
-            if (evt.key === 'ArrowRight') {
+        const keys = ['ArrowRight', 'ArrowLeft'];
+        const callBacks = {
+            ArrowRight: this.swipedRight,
+            ArrowLeft: this.swipedLeft,
+        };
+        window.onkeydown = ({key}) => {
+            if (keys.includes(key)) {
                 window.scrollTo(0, 0);
-
-                this.setState({point: window.innerWidth, swipeRight: true});
-            }
-
-            if (evt.key === 'ArrowLeft') {
-                window.scrollTo(0, 0);
-
-                this.setState({point: -window.innerWidth, swipeLeft: true});
+                callBacks[key]();
             }
         };
     };
     transitionEnd = () => {
         const {swipeLeft, swipeRight} = this.state;
         if (!swipeLeft && !swipeRight) return;
-        const {title, chapterNr, pageNr} = this.props;
+        const {pageNr} = this.props;
 
         if (swipeLeft) {
             if (pageNr === 1) return this.setState({point: 0, opacity: 1, swipeLeft: false});
-
-            return this.props.navigate(`/${title}/${chapterNr}/${pageNr - 1}`);
+            return this.navigateToPage(pageNr - 1);
         }
 
-        return this.props.navigate(`/${title}/${chapterNr}/${pageNr + 1}`);
+        return this.navigateToPage(pageNr + 1);
     };
     swiping = ({deltaX}) => {
         this.setState({point: deltaX, opacity: 1 - Math.abs(deltaX) / window.innerWidth});

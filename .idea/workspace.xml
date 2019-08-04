@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f90edbab-d9ae-4526-9a54-b3476682ec67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Chapter/ActivePage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Chapter/InactivePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Chapter/SwipeContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chapter/SwipeContainer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Chapter/SwipeContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="-80">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -296,12 +293,12 @@
       <workItem from="1564736226383" duration="2147000" />
       <workItem from="1564829369199" duration="13705000" />
       <workItem from="1564852421185" duration="7992000" />
-      <workItem from="1564920631917" duration="1693000" />
+      <workItem from="1564920631917" duration="3241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139532000" />
+    <option name="totallyTimeSpent" value="141080000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1618" height="877" extended-state="6" />
@@ -591,8 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Chapter/SwipeContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="-80">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
