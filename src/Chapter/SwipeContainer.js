@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import parse from 'html-react-parser';
 import {css} from '@emotion/core';
-import {Swipeable} from 'react-swipeable';
+import ActivePage from './ActivePage';
+import InactivePage from './InactivePage';
 class SwipeContainer extends Component {
     state = {
         opacity: 1,
@@ -62,66 +63,28 @@ class SwipeContainer extends Component {
     render() {
         const {point, opacity} = this.state;
         const {page, prevPage, nextPage, pageNr} = this.props;
+
         return (
             <div>
-                <Swipeable
-                    css={css`
-                        position: relative;
-                        z-index: 3;
-                    `}
-                    onSwipedLeft={this.swipeEnd}
-                    onSwipedRight={this.swipeEnd}
-                    onSwiping={this.swiping}>
-                    <div
-                        style={{transform: `translate3d(${point + 'px'},0,0)`, opacity: `${opacity}`}}
-                        css={css`
-                            transition: transform 0.1s;
-                            @media screen and (min-width: 60.25em) {
-                                transition: transform 0.4s;
-                            }
-                            background: var(--off-white);
-                        `}
-                        onTransitionEnd={this.transitionEnd}>
-                        <h2>{pageNr}</h2>
+                <ActivePage
+                    swipeEnd={this.swipeEnd}
+                    transitionEnd={this.transitionEnd}
+                    swiping={this.swiping}
+                    point={point}
+                    opacity={opacity}
+                    pageNr={pageNr}
+                    page={page}
+                />
 
-                        {parse(page)}
-                    </div>
-                </Swipeable>
-                {nextPage && (
-                    <div
-                        css={css`
-                            position: absolute;
-                            top: 0;
-                            background: var(--off-white);
-                            z-index: ${point > 1 ? 2 : 0};
-                        `}>
-                        <h2>{pageNr + 1}</h2>
-
-                        {parse(nextPage)}
-                    </div>
+                {nextPage ? (
+                    <InactivePage page={nextPage} pageNr={pageNr + 1} point={point > 1 ? 2 : 0} />
+                ) : (
+                    <InactivePage point={point > 1 ? 2 : 0} />
                 )}
                 {prevPage ? (
-                    <div
-                        css={css`
-                            position: absolute;
-                            top: 0;
-                            background: var(--off-white);
-                            z-index: ${point > 1 ? 0 : 2};
-                        `}>
-                        <h2>{pageNr - 1}</h2>
-
-                        {parse(prevPage)}
-                    </div>
+                    <InactivePage page={prevPage} pageNr={pageNr - 1} point={point > 1 ? 0 : 2} />
                 ) : (
-                    <div
-                        css={css`
-                            position: absolute;
-                            width: 100vw;
-                            height: 100vh;
-                            top: 0;
-                            background: var(--off-white);
-                            z-index: ${point > 1 ? 0 : 2};
-                        `}></div>
+                    <InactivePage point={point > 1 ? 0 : 2} />
                 )}
             </div>
         );
