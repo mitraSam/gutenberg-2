@@ -14,8 +14,9 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                     } else {
                         const {bookDetails, bookChapter} = data;
                         const {title, author, chapterTitles, pagesNr, epigraph} = bookDetails;
-                        const pageNumber = Number(pageNr);
-                        const {pages} = bookChapter;
+                        const {pages, pagination} = bookChapter;
+
+                        const pageIndex = Number(pageNr) - pagination[0];
                         return (
                             <div
                                 css={css`
@@ -38,11 +39,11 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                                                 pageNr={Number(pageNr)}
                                                 title={title}
                                                 chapterNr={chapterNr}
-                                                page={pages[pageNr - 1].content}
-                                                prevPage={
-                                                    pages[[pageNumber] - 2] ? pages[pageNumber - 2].content : null
-                                                }
-                                                nextPage={pages[pageNumber] ? pages[pageNumber].content : null}
+                                                chapterPages={pagination}
+                                                chapterTitles={chapterTitles}
+                                                page={pages[pageIndex].content}
+                                                prevPage={pages[pageIndex - 1] ? pages[pageIndex - 1].content : null}
+                                                nextPage={pages[pageIndex + 1] ? pages[pageIndex + 1].content : null}
                                             />
                                         </div>
                                     </div>

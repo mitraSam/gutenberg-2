@@ -2,7 +2,7 @@ import React from 'react';
 import parse from 'html-react-parser';
 import {css} from '@emotion/core';
 
-const InactivePage = ({pageNr, point, page}) => {
+const InactivePage = ({pageNr, point, page, lastChapterPage, nextChapterTitle}) => {
     return (
         <div>
             {page ? (
@@ -12,6 +12,7 @@ const InactivePage = ({pageNr, point, page}) => {
                         top: 0;
                         background: var(--off-white);
                         z-index: ${point};
+                        display: ${point ? 'block' : 'none'};
                     `}>
                     <h2>{pageNr}</h2>
 
@@ -26,7 +27,14 @@ const InactivePage = ({pageNr, point, page}) => {
                         top: 0;
                         background: var(--off-white);
                         z-index: ${point};
-                    `}></div>
+                    `}>
+                    {lastChapterPage && (
+                        <div>
+                            <h2>{pageNr}</h2>
+                            <h2>{nextChapterTitle}</h2>
+                        </div>
+                    )}
+                </div>
             )}
         </div>
     );
