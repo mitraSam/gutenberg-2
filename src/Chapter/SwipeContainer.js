@@ -73,7 +73,18 @@ class SwipeContainer extends Component {
     };
     render() {
         const {point, opacity} = this.state;
-        const {page, prevPage, nextPage, pageNr, chapterPages, chapterNr, chapterTitles} = this.props;
+        const {
+            page,
+            prevPage,
+            nextPage,
+            pageNr,
+            chapterPages,
+            chapterNr,
+            chapterTitles,
+            author,
+            title,
+            totalPages,
+        } = this.props;
         const lastChapterPage = pageNr === chapterPages[1];
         const nextChapterTitle = chapterTitles[chapterNr];
         return (
@@ -86,6 +97,11 @@ class SwipeContainer extends Component {
                     opacity={opacity}
                     pageNr={pageNr}
                     page={page}
+                    chapterTitles={chapterTitles}
+                    author={author}
+                    title={title}
+                    chapterNr={chapterNr}
+                    totalPages={totalPages}
                 />
 
                 <InactivePage

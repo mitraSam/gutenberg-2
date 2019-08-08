@@ -76,6 +76,8 @@ button{
 button::-moz-focus-inner{
   border:none;
 }
+button:focus {outline:0;}
+
 a{
   color:var(--dark-gray);
   text-decoration:none;

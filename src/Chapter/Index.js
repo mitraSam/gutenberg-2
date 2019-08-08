@@ -17,6 +17,7 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                         const {pages, pagination} = bookChapter;
 
                         const pageIndex = Number(pageNr) - pagination[0];
+                        console.log(bookDetails);
                         return (
                             <div
                                 css={css`
@@ -39,6 +40,8 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                                                 pageNr={Number(pageNr)}
                                                 title={title}
                                                 chapterNr={chapterNr}
+                                                author={author}
+                                                totalPages={pagesNr}
                                                 chapterPages={pagination}
                                                 chapterTitles={chapterTitles}
                                                 page={pages[pageIndex].content}

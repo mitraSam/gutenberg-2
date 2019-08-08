@@ -17,7 +17,6 @@ const NavItem = ({link, updateNavState}) => {
         transition: opacity 0.15s ease-in-out;
         &:after {
             content: '';
-
             display: block;
             width: 0;
             height: 1px;

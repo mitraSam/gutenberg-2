@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Swipeable} from 'react-swipeable';
 import {css} from '@emotion/core';
 
 import parse from 'html-react-parser';
+import Header from './Header';
+import Bookmark from './Bookmark';
 
-const ActivePage = ({point, opacity, pageNr, page, swipeEnd, transitionEnd, swiping}) => {
+const ActivePage = ({
+    point,
+    opacity,
+    pageNr,
+    page,
+    swipeEnd,
+    transitionEnd,
+    swiping,
+    title,
+    author,
+    chapterTitles,
+    chapterNr,
+    totalPages,
+}) => {
+    const [showBookmark, setBookmark] = useState(false);
     return (
         <Swipeable
             css={css`
@@ -24,8 +40,15 @@ const ActivePage = ({point, opacity, pageNr, page, swipeEnd, transitionEnd, swip
                     background: var(--off-white);
                 `}
                 onTransitionEnd={transitionEnd}>
-                <h2>{pageNr}</h2>
-
+                <Bookmark
+                    show={showBookmark}
+                    title={title}
+                    author={author}
+                    totalPages={totalPages}
+                    chapterTitles={chapterTitles}
+                    chapterNr={chapterNr}
+                />
+                <Header setBookmark={setBookmark} showBookmark={showBookmark} pageNr={pageNr} />
                 {parse(page)}
             </div>
         </Swipeable>

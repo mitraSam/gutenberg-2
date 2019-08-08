@@ -1,6 +1,7 @@
 import React from 'react';
 import parse from 'html-react-parser';
 import {css} from '@emotion/core';
+import Header from './Header';
 
 const InactivePage = ({pageNr, point, page, lastChapterPage, nextChapterTitle}) => {
     return (
@@ -14,7 +15,7 @@ const InactivePage = ({pageNr, point, page, lastChapterPage, nextChapterTitle}) 
                         z-index: ${point};
                         display: ${point ? 'block' : 'none'};
                     `}>
-                    <h2>{pageNr}</h2>
+                    <Header pageNr={pageNr} />
 
                     {parse(page)}
                 </div>
@@ -30,7 +31,7 @@ const InactivePage = ({pageNr, point, page, lastChapterPage, nextChapterTitle}) 
                     `}>
                     {lastChapterPage && (
                         <div>
-                            <h2>{pageNr}</h2>
+                            <Header pageNr={pageNr} />
                             <h2>{nextChapterTitle}</h2>
                         </div>
                     )}
