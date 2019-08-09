@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f90edbab-d9ae-4526-9a54-b3476682ec67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Chapter/PagePlaceholder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Chapter/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chapter/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/main.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,14 +79,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Chapter/PagePlaceholder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="224">
+              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/styles/main.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="523">
+              <caret line="228" column="16" lean-forward="true" selection-start-line="228" selection-start-column="16" selection-end-line="228" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -180,7 +188,6 @@
         <option value="$PROJECT_DIR$/src/Chapter/CurrentPage.js" />
         <option value="$PROJECT_DIR$/src/Chapter/OtherPage.js" />
         <option value="$PROJECT_DIR$/src/styles/reset.scss" />
-        <option value="$PROJECT_DIR$/src/styles/main.scss" />
         <option value="$PROJECT_DIR$/src/Header/NavItem.js" />
         <option value="$PROJECT_DIR$/src/Chapter/Header.js" />
         <option value="$PROJECT_DIR$/src/Queries.js" />
@@ -191,6 +198,7 @@
         <option value="$PROJECT_DIR$/src/Chapter/InactivePage.js" />
         <option value="$PROJECT_DIR$/src/Chapter/Index.js" />
         <option value="$PROJECT_DIR$/src/Chapter/PagePlaceholder.js" />
+        <option value="$PROJECT_DIR$/src/styles/main.scss" />
       </list>
     </option>
   </component>
@@ -353,12 +361,12 @@
       <workItem from="1564992798270" duration="5644000" />
       <workItem from="1565075710762" duration="9592000" />
       <workItem from="1565250321862" duration="5681000" />
-      <workItem from="1565336705571" duration="5000000" />
+      <workItem from="1565336705571" duration="5531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173866000" />
+    <option name="totallyTimeSpent" value="174397000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1618" height="877" extended-state="6" />
@@ -559,16 +567,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/main-nav.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/main.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Header/Nav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-16">
@@ -666,11 +664,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Chapter/PagePlaceholder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="224">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/main-nav.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="228" column="16" lean-forward="true" selection-start-line="228" selection-start-column="16" selection-end-line="228" selection-end-column="16" />
         </state>
       </provider>
     </entry>
