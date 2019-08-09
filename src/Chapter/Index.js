@@ -4,26 +4,14 @@ import {GET_READING_BOOK} from '../Queries';
 import {css} from '@emotion/core';
 import parse from 'html-react-parser';
 import Container from './SwipeContainer';
+import PagePlaceholder from './PagePlaceholder';
 const Chapter = ({title, chapterNr, pageNr, navigate}) => {
     return (
         <div>
             <Query query={GET_READING_BOOK} variables={{title, chapterNr: chapterNr - 1}}>
                 {({data, loading}) => {
                     if (loading) {
-                        return (
-                            <div
-                                css={css`
-                                    display: flex;
-                                `}>
-                                <div
-                                    css={css`
-                                        position: relative;
-                                        display: inline-block;
-                                        margin: 0 auto;
-                                    `}></div>
-                                <h1>loading</h1>
-                            </div>
-                        );
+                        return <PagePlaceholder />;
                     } else {
                         const {bookDetails, bookChapter} = data;
                         const {title, author, tableOfContents, pagesNr, epigraph} = bookDetails;
