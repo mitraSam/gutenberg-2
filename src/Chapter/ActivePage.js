@@ -16,9 +16,10 @@ const ActivePage = ({
     swiping,
     title,
     author,
-    chapterTitles,
+    tableOfContents,
     chapterNr,
     totalPages,
+    navigate,
 }) => {
     const [showBookmark, setBookmark] = useState(false);
     return (
@@ -31,6 +32,7 @@ const ActivePage = ({
             onSwipedRight={swipeEnd}
             onSwiping={swiping}>
             <div
+                onClick={() => (showBookmark ? setBookmark(false) : null)}
                 style={{transform: `translate3d(${point + 'px'},0,0)`, opacity: `${opacity}`}}
                 css={css`
                     transition: transform 0.1s;
@@ -45,8 +47,9 @@ const ActivePage = ({
                     title={title}
                     author={author}
                     totalPages={totalPages}
-                    chapterTitles={chapterTitles}
+                    tableOfContents={tableOfContents}
                     chapterNr={chapterNr}
+                    navigate={navigate}
                 />
                 <Header setBookmark={setBookmark} showBookmark={showBookmark} pageNr={pageNr} />
                 {parse(page)}

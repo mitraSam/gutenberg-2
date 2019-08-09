@@ -10,14 +10,26 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
             <Query query={GET_READING_BOOK} variables={{title, chapterNr: chapterNr - 1}}>
                 {({data, loading}) => {
                     if (loading) {
-                        return <h1>loading</h1>;
+                        return (
+                            <div
+                                css={css`
+                                    display: flex;
+                                `}>
+                                <div
+                                    css={css`
+                                        position: relative;
+                                        display: inline-block;
+                                        margin: 0 auto;
+                                    `}></div>
+                                <h1>loading</h1>
+                            </div>
+                        );
                     } else {
                         const {bookDetails, bookChapter} = data;
-                        const {title, author, chapterTitles, pagesNr, epigraph} = bookDetails;
+                        const {title, author, tableOfContents, pagesNr, epigraph} = bookDetails;
                         const {pages, pagination} = bookChapter;
 
                         const pageIndex = Number(pageNr) - pagination[0];
-                        console.log(bookDetails);
                         return (
                             <div
                                 css={css`
@@ -43,7 +55,7 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                                                 author={author}
                                                 totalPages={pagesNr}
                                                 chapterPages={pagination}
-                                                chapterTitles={chapterTitles}
+                                                tableOfContents={tableOfContents}
                                                 page={pages[pageIndex].content}
                                                 prevPage={pages[pageIndex - 1] ? pages[pageIndex - 1].content : null}
                                                 nextPage={pages[pageIndex + 1] ? pages[pageIndex + 1].content : null}

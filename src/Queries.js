@@ -26,7 +26,10 @@ export const GET_BOOK_DETAILS = gql`
             source
             wikiData
             license
-            chapterTitles
+            tableOfContents {
+                title
+                pagination
+            }
             source
             epigraph
         }
@@ -38,7 +41,10 @@ export const GET_READING_BOOK = gql`
         bookDetails(title: $title) {
             title
             author
-            chapterTitles
+            tableOfContents {
+                title
+                pagination
+            }
             pagesNr
             epigraph
         }

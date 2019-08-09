@@ -6,7 +6,6 @@ import {GET_BOOK_DETAILS} from '../Queries';
 import Subtitle from '../Subtitle/Subtitle';
 
 const Details = ({title}) => {
-    console.log(title, 'here');
     return (
         <div
             css={css`
@@ -19,7 +18,16 @@ const Details = ({title}) => {
                 {({data, loading}) => {
                     const {bookDetails} = data;
                     if (bookDetails)
-                        var {title, author, credits, license, source, wikiData, chapterTitles, epigraph} = bookDetails;
+                        var {
+                            title,
+                            author,
+                            credits,
+                            license,
+                            source,
+                            wikiData,
+                            tableOfContents,
+                            epigraph,
+                        } = bookDetails;
                     return loading ? (
                         <h1>ladoing</h1>
                     ) : bookDetails ? (
@@ -78,14 +86,14 @@ const Details = ({title}) => {
                             </p>
                             <Subtitle text="chapters" />
 
-                            {chapterTitles.map((chTitle, i) => (
-                                <p key={chTitle}>
+                            {tableOfContents.map((ch, i) => (
+                                <p key={ch.title}>
                                     <Link
                                         css={css`
                                             border-bottom: 1px solid var(--action-color);
                                         `}
-                                        to={`/${title}/${i + 1}`}>
-                                        {chTitle}
+                                        to={`/${title}/${i + 1}/${ch.pagination[0]}`}>
+                                        {ch.title}
                                     </Link>
                                 </p>
                             ))}

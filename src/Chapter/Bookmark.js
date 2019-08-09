@@ -2,20 +2,23 @@ import React, {useState} from 'react';
 import {css} from '@emotion/core';
 import {Link} from '@reach/router';
 
-const Bookmark = ({show, title, author, chapterTitles, chapterNr, totalPages}) => {
+const Bookmark = ({show, title, author, tableOfContents, chapterNr, totalPages, navigate}) => {
     const active = css`
         transform: translate(0, 0);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     `;
-    const [currentChapter, selectChapter] = useState(chapterTitles[Number(chapterNr) - 1]);
+    const [currentChapter, selectChapter] = useState(tableOfContents[Number(chapterNr) - 1].title);
     const handleChapterChange = ({target}) => {
-        const selectedChapter = chapterTitles[target.options.selectedIndex];
-        selectChapter(selectedChapter);
+        const {selectedIndex} = target.options;
+        const selectedChapter = tableOfContents[selectedIndex];
+        selectChapter(selectedChapter.title);
+        navigate(`/${title}/${selectedIndex + 1}/${selectedChapter.pagination[0]}`);
     };
     return (
         <div
+            onClick={e => e.stopPropagation()}
             css={css`
-                background: var(--off-white);
+                background-color: var(--off-white);
                 font-size: 0.8em;
                 transform: translate(0, -105%);
                 transition: transform 0.5s;
@@ -44,10 +47,11 @@ const Bookmark = ({show, title, author, chapterTitles, chapterNr, totalPages}) =
             </h1>
             <h2>{author}</h2>
             <p>pages: {totalPages}</p>
+            <p>chapters:</p>
             <select onChange={handleChapterChange} value={currentChapter}>
-                {chapterTitles.map((chapter, i) => (
-                    <option data-index={i} key={chapter} value={chapter}>
-                        {chapter}
+                {tableOfContents.map(({title, pagination}, i) => (
+                    <option data-index={i} key={title} value={title}>
+                        {title}
                     </option>
                 ))}
             </select>

@@ -65,7 +65,7 @@ class SwipeContainer extends Component {
             if (pageNr === 1) return this.setState({point: 0, opacity: 1, swipeLeft: false});
             return this.handlePageNavigation(pageNr - 1);
         }
-
+        if (pageNr === this.props.totalPages) return this.setState({point: 0, opacity: 1, swipeRight: false});
         return this.handlePageNavigation(pageNr + 1);
     };
     swiping = ({deltaX}) => {
@@ -80,13 +80,14 @@ class SwipeContainer extends Component {
             pageNr,
             chapterPages,
             chapterNr,
-            chapterTitles,
+            tableOfContents,
             author,
             title,
             totalPages,
         } = this.props;
         const lastChapterPage = pageNr === chapterPages[1];
-        const nextChapterTitle = chapterTitles[chapterNr];
+        const nextChapterTitle = tableOfContents[chapterNr] ? tableOfContents[chapterNr].title : null;
+        const onLastPage = pageNr === totalPages;
         return (
             <div>
                 <ActivePage
@@ -97,21 +98,22 @@ class SwipeContainer extends Component {
                     opacity={opacity}
                     pageNr={pageNr}
                     page={page}
-                    chapterTitles={chapterTitles}
+                    tableOfContents={tableOfContents}
                     author={author}
                     title={title}
                     chapterNr={chapterNr}
                     totalPages={totalPages}
+                    navigate={this.props.navigate}
                 />
-
-                <InactivePage
-                    lastChapterPage={lastChapterPage}
-                    nextChapterTitle={nextChapterTitle}
-                    page={nextPage}
-                    pageNr={pageNr + 1}
-                    point={point > 0 ? 2 : 0}
-                />
-
+                {!onLastPage && (
+                    <InactivePage
+                        lastChapterPage={lastChapterPage}
+                        nextChapterTitle={nextChapterTitle}
+                        page={nextPage}
+                        pageNr={pageNr + 1}
+                        point={point > 0 ? 2 : 0}
+                    />
+                )}
                 <InactivePage
                     lastChapterPage={lastChapterPage}
                     nextChapterTitle={nextChapterTitle}
