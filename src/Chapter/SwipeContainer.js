@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ActivePage from './ActivePage';
 import InactivePage from './InactivePage';
+import DetailsContext from './DetailsContext';
 class SwipeContainer extends Component {
     state = {
         opacity: 1,
@@ -8,11 +9,10 @@ class SwipeContainer extends Component {
         swipeLeft: false,
         swipeRight: false,
     };
-
     componentDidMount() {
         this.setArrowNav();
     }
-
+    static contextType = DetailsContext;
     swipedRight = () => this.setState({point: window.innerWidth, swipeRight: true});
     swipedLeft = () => this.setState({point: -window.innerWidth, swipeLeft: true});
 
@@ -31,7 +31,7 @@ class SwipeContainer extends Component {
         }
         this.swipedLeft();
     };
-    navigateToPage = (title, chapterNr, pageNr) => this.props.navigate(`/${title}/${chapterNr}/${pageNr}`);
+    navigateToPage = (title, chapterNr, pageNr) => this.context.navigate(`/${title}/${chapterNr}/${pageNr}`);
 
     setArrowNav = () => {
         const keys = ['ArrowRight', 'ArrowLeft'];
@@ -47,7 +47,7 @@ class SwipeContainer extends Component {
         };
     };
     handlePageNavigation = pageNr => {
-        const {chapterPages, chapterNr, title} = this.props;
+        const {chapterPages, chapterNr, title} = this.context;
         if (pageNr === chapterPages[1] + 1) {
             return this.navigateToPage(title, Number(chapterNr) + 1, pageNr);
         }
@@ -59,13 +59,13 @@ class SwipeContainer extends Component {
     transitionEnd = () => {
         const {swipeLeft, swipeRight} = this.state;
         if (!swipeLeft && !swipeRight) return;
-        const {pageNr} = this.props;
+        const {pageNr} = this.context;
 
         if (swipeLeft) {
             if (pageNr === 1) return this.setState({point: 0, opacity: 1, swipeLeft: false});
             return this.handlePageNavigation(pageNr - 1);
         }
-        if (pageNr === this.props.totalPages) return this.setState({point: 0, opacity: 1, swipeRight: false});
+        if (pageNr === this.context.totalPages) return this.setState({point: 0, opacity: 1, swipeRight: false});
         return this.handlePageNavigation(pageNr + 1);
     };
     swiping = ({deltaX}) => {
@@ -73,18 +73,9 @@ class SwipeContainer extends Component {
     };
     render() {
         const {point, opacity} = this.state;
-        const {
-            page,
-            prevPage,
-            nextPage,
-            pageNr,
-            chapterPages,
-            chapterNr,
-            tableOfContents,
-            author,
-            title,
-            totalPages,
-        } = this.props;
+        const {page, prevPage, nextPage} = this.props;
+        const {pageNr, chapterNr, tableOfContents, totalPages, chapterPages} = this.context;
+
         const lastChapterPage = pageNr === chapterPages[1];
         const nextChapterTitle = tableOfContents[chapterNr] ? tableOfContents[chapterNr].title : null;
         const onLastPage = pageNr === totalPages;
@@ -96,14 +87,8 @@ class SwipeContainer extends Component {
                     swiping={this.swiping}
                     point={point}
                     opacity={opacity}
-                    pageNr={pageNr}
                     page={page}
-                    tableOfContents={tableOfContents}
-                    author={author}
-                    title={title}
-                    chapterNr={chapterNr}
-                    totalPages={totalPages}
-                    navigate={this.props.navigate}
+                    pageNr={pageNr}
                 />
                 {!onLastPage && (
                     <InactivePage
