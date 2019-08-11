@@ -15,6 +15,7 @@ import Main from '../Main';
 import Landing from '../Landing';
 import Details from '../Details';
 import Chapter from '../Chapter';
+import UploadForm from '../UploadForm';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
@@ -76,6 +77,7 @@ const setupAndRender = async () => {
                                 <Landing path="/" />
                                 <Details path="/:title" />
                                 <Chapter path="/:title/:chapterNr/:pageNr" />
+                                <UploadForm path="/upload" />
                                 <NotFound default />
                             </Main>
                         </Router>

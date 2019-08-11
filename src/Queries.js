@@ -58,3 +58,19 @@ export const GET_READING_BOOK = gql`
         }
     }
 `;
+
+export const UPLOAD_BOOK = gql`
+    mutation uploadBook($input: UploadBookInput!) {
+        uploadBook(input: $input) {
+            author
+            title
+        }
+    }
+`;
+export const BOOK_UPLOAD_SUB = gql`
+    subscription {
+        uploadingBook {
+            message
+        }
+    }
+`;

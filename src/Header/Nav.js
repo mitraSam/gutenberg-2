@@ -16,11 +16,12 @@ const Nav = ({navState, updateNavState}) => {
             css={css`
 background: var(--off-white);
                 font-size: 1.5em;
+                z-index: 100;
                 position: absolute;
                 transform-origin: 50% 0;
                 transform: scale(1, 0);
                 top:3em;
-                transition: transform 0.15s ease-in-out 0.15s;
+                transition: transform 0.15s ease-in-out 0.1s;
                 width: 97%;
                   @media (min-width:43.75em){
                     font-size:1.7em
@@ -28,6 +29,7 @@ background: var(--off-white);
 
                  @media (min-width:60.25em){
                     position: relative;
+
                                         font-size:1.4em;
 
                 top: initial;
