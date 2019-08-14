@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {css} from '@emotion/core';
 import {Link} from '@reach/router';
 import SearchForm from '../Search/SearchForm';
+import UserContext from '../Contexts/UserContext';
 
 const NavItem = ({link, updateNavState}) => {
     const [linkState, updateLinkState] = useState(false);
@@ -48,24 +49,31 @@ const NavItem = ({link, updateNavState}) => {
     `;
 
     return (
-        <li
-            css={css`
-                order: ${link.totalLinks - link.i};
-                ${navItem};
-            `}>
-            {link.name === 'search' ? (
-                <SearchForm update={updateLinkState} onSubmit={() => updateNavState(false)}></SearchForm>
-            ) : (
-                <Link
-                    tabIndex={link.totalLinks - link.i}
-                    onFocus={() => updateLinkState(true)}
-                    onBlur={() => updateLinkState(false)}
-                    to={`/${link.name}`}
-                    css={navLink}>
-                    {link.name}
-                </Link>
-            )}
-        </li>
+        <UserContext.Consumer>
+            {({user: {name}}) => {
+                const displayUsername = link.name === 'about' && name;
+                return (
+                    <li
+                        css={css`
+                            order: ${link.totalLinks - link.i};
+                            ${navItem};
+                        `}>
+                        {link.name === 'search' ? (
+                            <SearchForm update={updateLinkState} onSubmit={() => updateNavState(false)}></SearchForm>
+                        ) : (
+                            <Link
+                                tabIndex={link.totalLinks - link.i}
+                                onFocus={() => updateLinkState(true)}
+                                onBlur={() => updateLinkState(false)}
+                                to={`/${displayUsername ? '/user' : link.name}`}
+                                css={navLink}>
+                                {displayUsername ? name : link.name}
+                            </Link>
+                        )}
+                    </li>
+                );
+            }}
+        </UserContext.Consumer>
     );
 };
 export default NavItem;

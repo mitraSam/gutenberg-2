@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {css} from '@emotion/core';
-import {useMutation, useSubscription} from '@apollo/react-hooks';
+import {useMutation} from '@apollo/react-hooks';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import Subtitle from '../Subtitle/Subtitle';
-import {BOOK_UPLOAD_SUB, UPLOAD_BOOK} from '../Queries';
+import {UPLOAD_BOOK} from '../Queries';
 import Input from './Input';
 import CreditsInput from './CreditsInput';
 import UploadFileButton from './UploadFileButton';

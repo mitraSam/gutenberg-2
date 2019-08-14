@@ -4,7 +4,7 @@ import {css} from '@emotion/core';
 import NavItem from './NavItem';
 
 const Nav = ({navState, updateNavState}) => {
-    const links = ['log in', 'about', 'search'];
+    const links = ['login', 'about', 'search'];
     const activeNav = css`
         transform: scale(1, 1);
         & li {
@@ -14,7 +14,7 @@ const Nav = ({navState, updateNavState}) => {
     return (
         <nav
             css={css`
-background: var(--off-white);
+                background: var(--off-white);
                 font-size: 1.5em;
                 z-index: 100;
                 position: absolute;
@@ -26,15 +26,12 @@ background: var(--off-white);
                   @media (min-width:43.75em){
                     font-size:1.7em
                 }
-
                  @media (min-width:60.25em){
                     position: relative;
-
-                                        font-size:1.4em;
-
-                top: initial;
-width: auto;
-transform: none;
+                    font-size:1.4em;
+                    top: initial;
+                    width: auto;
+                    transform: none;
                 }
                 ${navState ? activeNav : ''}
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Match, Router} from '@reach/router';
 import {ApolloProvider} from 'react-apollo';
 import {persistCache} from 'apollo-cache-persist';
-import {InMemoryCache, HttpLink, ApolloLink, ApolloClient, split} from 'apollo-boost';
+import {InMemoryCache, ApolloLink, ApolloClient, split} from 'apollo-boost';
 import {WebSocketLink} from 'apollo-link-ws';
 import {getMainDefinition} from 'apollo-utilities';
 import {createUploadLink} from 'apollo-upload-client';
@@ -16,6 +16,10 @@ import Landing from '../Landing';
 import Details from '../Details';
 import Chapter from '../Chapter';
 import UploadForm from '../UploadForm';
+import Form from '../Auth/Form';
+import Login from '../Auth/Login';
+import {userFromToken, decodeToken} from '../Utils';
+import UserContext from '../Contexts/UserContext';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
@@ -63,24 +67,48 @@ const setupAndRender = async () => {
         cache,
         link,
     });
+    const user = userFromToken() || {};
+
     class App extends React.Component {
+        setUser = token => {
+            const decodedToken = decodeToken(token);
+
+            if (decodedToken) {
+                const user = {name: decodedToken.data, exp: decodedToken.exp};
+
+                return this.setState({user});
+            }
+            return {};
+        };
+        state = {
+            user: user,
+            setUser: this.setUser,
+        };
+
         render() {
             return (
                 <ApolloProvider client={client}>
                     <div>
-                        <div>
-                            <Match path="/:title/:chapterNr/:pageNr">{props => (props.match ? '' : <Header />)}</Match>
-                        </div>
-                        <Router>
-                            <Main path="/">
-                                <Search path="/search/:param" />
-                                <Landing path="/" />
-                                <Details path="/:title" />
-                                <Chapter path="/:title/:chapterNr/:pageNr" />
-                                <UploadForm path="/upload" />
-                                <NotFound default />
-                            </Main>
-                        </Router>
+                        <UserContext.Provider value={this.state}>
+                            <div>
+                                <Match path="/:title/:chapterNr/:pageNr">
+                                    {props => (props.match ? '' : <Header />)}
+                                </Match>
+                            </div>
+                            <Router>
+                                <Main path="/">
+                                    <Search path="/search/:param" />
+                                    <Landing path="/" />
+                                    <Details path="/:title" />
+                                    <Chapter path="/:title/:chapterNr/:pageNr" />
+                                    <UploadForm path="/upload" />
+                                    <Login path="login" />
+                                    <Form title="login" path="form" />
+
+                                    <NotFound default />
+                                </Main>
+                            </Router>
+                        </UserContext.Provider>
                     </div>
                 </ApolloProvider>
             );

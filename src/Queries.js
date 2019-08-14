@@ -74,3 +74,9 @@ export const BOOK_UPLOAD_SUB = gql`
         }
     }
 `;
+
+export const LOGIN_MUTATION = gql`
+    mutation login($username: String!, $password: String!) {
+        loginUser(username: $username, password: $password)
+    }
+`;
