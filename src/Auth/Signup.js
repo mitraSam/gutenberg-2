@@ -1,25 +1,25 @@
-import React, {useState, Component} from 'react';
+import React, {useState} from 'react';
 import Form from './Form';
 import {useMutation} from '@apollo/react-hooks';
-import {LOGIN_MUTATION} from '../Queries';
+import {SIGNUP_MUTATION} from '../Queries';
 import UserContext from '../Contexts/UserContext';
 
-const Login = ({navigate}) => {
-    const [login, {}] = useMutation(LOGIN_MUTATION);
+const Signup = ({navigate}) => {
+    const [signup, {}] = useMutation(SIGNUP_MUTATION);
     const [authError, setAuthError] = useState(null);
     let logUserIn;
     const handleError = e => {
-        console.log(e);
+        console.log(JSON.stringify(e));
         setAuthError(e.graphQLErrors[0].message);
     };
-    const handleAuth = ({data: {loginUser}}) => {
-        localStorage.setItem('userToken', loginUser);
-        logUserIn(loginUser);
+    const handleAuth = ({data: {registerUser}}) => {
+        localStorage.setItem('userToken', registerUser);
+        logUserIn(registerUser);
         navigate('/');
     };
 
     const handleFormSubmit = values => {
-        login({variables: values})
+        signup({variables: values})
             .then(handleAuth)
             .catch(handleError);
     };
@@ -33,7 +33,7 @@ const Login = ({navigate}) => {
                         authError={authError}
                         setAuthError={setAuthError}
                         handleFormSubmit={handleFormSubmit}
-                        title={'login'}
+                        title={'sign up'}
                     />
                 );
             }}
@@ -41,4 +41,4 @@ const Login = ({navigate}) => {
     );
 };
 
-export default Login;
+export default Signup;

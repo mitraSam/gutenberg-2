@@ -80,3 +80,9 @@ export const LOGIN_MUTATION = gql`
         loginUser(username: $username, password: $password)
     }
 `;
+
+export const SIGNUP_MUTATION = gql`
+    mutation signup($username: String!, $password: String) {
+        registerUser(username: $username, password: $password)
+    }
+`;

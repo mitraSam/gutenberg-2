@@ -16,10 +16,11 @@ import Landing from '../Landing';
 import Details from '../Details';
 import Chapter from '../Chapter';
 import UploadForm from '../UploadForm';
-import Form from '../Auth/Form';
+import User from '../User';
 import Login from '../Auth/Login';
 import {userFromToken, decodeToken} from '../Utils';
 import UserContext from '../Contexts/UserContext';
+import Signup from '../Auth/Signup';
 const httpLink = createUploadLink({
     uri: 'http://localhost:3000/graphql',
 });
@@ -103,8 +104,8 @@ const setupAndRender = async () => {
                                     <Chapter path="/:title/:chapterNr/:pageNr" />
                                     <UploadForm path="/upload" />
                                     <Login path="login" />
-                                    <Form title="login" path="form" />
-
+                                    <Signup path="signup" />
+                                    <User path="user" />
                                     <NotFound default />
                                 </Main>
                             </Router>
