@@ -86,3 +86,18 @@ export const SIGNUP_MUTATION = gql`
         registerUser(username: $username, password: $password)
     }
 `;
+export const BOOKMARK_MUTATION = gql`
+    mutation bookmarkPage($username: String!, $title: String!, $author: String!, $chapterNr: Int!, $pageNr: Int!) {
+        bookmarkPage(username: $username, title: $title, author: $author, chapterNr: $chapterNr, pageNr: $pageNr)
+    }
+`;
+export const READ_BOOKS = gql`
+    query readBooks($username: String!) {
+        readBooks(username: $username) {
+            title
+            author
+            chapterNr
+            pageNr
+        }
+    }
+`;

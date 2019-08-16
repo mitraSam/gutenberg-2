@@ -3,6 +3,8 @@ import {css} from '@emotion/core';
 import {Link} from '@reach/router';
 import SearchForm from '../Search/SearchForm';
 import UserContext from '../Contexts/UserContext';
+import {logout} from '../Utils';
+import {navigate} from '@reach/router';
 
 const NavItem = ({link, updateNavState}) => {
     const [linkState, updateLinkState] = useState(false);
@@ -49,31 +51,38 @@ const NavItem = ({link, updateNavState}) => {
     `;
 
     return (
-        <UserContext.Consumer>
-            {({user: {name}}) => {
-                const displayUsername = link.name === 'about' && name;
-                return (
-                    <li
-                        css={css`
-                            order: ${link.totalLinks - link.i};
-                            ${navItem};
-                        `}>
-                        {link.name === 'search' ? (
-                            <SearchForm update={updateLinkState} onSubmit={() => updateNavState(false)}></SearchForm>
-                        ) : (
+        <li
+            css={css`
+                order: ${link.totalLinks - link.i};
+                ${navItem};
+            `}>
+            {link.name === 'search' ? (
+                <SearchForm update={updateLinkState} onSubmit={() => updateNavState(false)}></SearchForm>
+            ) : (
+                <UserContext.Consumer>
+                    {({setUser}) => {
+                        return (
                             <Link
                                 tabIndex={link.totalLinks - link.i}
                                 onFocus={() => updateLinkState(true)}
                                 onBlur={() => updateLinkState(false)}
-                                to={`/${displayUsername ? '/user' : link.name}`}
+                                onClick={e => {
+                                    if (link.name === 'logout') {
+                                        e.preventDefault();
+                                        setUser();
+                                        return;
+                                    }
+                                    navigate(`/${link.to ? link.to : link.name}`);
+                                }}
+                                to={`/${link.to ? link.to : link.name}`}
                                 css={navLink}>
-                                {displayUsername ? name : link.name}
+                                {link.name}
                             </Link>
-                        )}
-                    </li>
-                );
-            }}
-        </UserContext.Consumer>
+                        );
+                    }}
+                </UserContext.Consumer>
+            )}
+        </li>
     );
 };
 export default NavItem;

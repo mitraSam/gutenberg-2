@@ -1,10 +1,10 @@
 import React from 'react';
 import {css} from '@emotion/core';
-
+import UserContext from '../Contexts/UserContext';
 import NavItem from './NavItem';
 
 const Nav = ({navState, updateNavState}) => {
-    const links = ['login', 'about', 'search'];
+    const defaultLinks = [{name: 'login'}, {name: 'about'}, {name: 'search'}];
     const activeNav = css`
         transform: scale(1, 1);
         & li {
@@ -12,8 +12,14 @@ const Nav = ({navState, updateNavState}) => {
         }
     `;
     return (
-        <nav
-            css={css`
+        <UserContext.Consumer>
+            {({user: {name}}) => {
+                const links = name
+                    ? [{name: 'logout', to: ''}, {name, to: 'user'}, {name: 'about'}, {name: 'search'}]
+                    : defaultLinks;
+                return (
+                    <nav
+                        css={css`
                 background: var(--off-white);
                 font-size: 1.5em;
                 z-index: 100;
@@ -38,21 +44,24 @@ const Nav = ({navState, updateNavState}) => {
 
             }
             `}>
-            <ul
-                css={css`
-                    @media (min-width: 60.25em) {
-                        display: flex;
-                    }
-                `}>
-                {links.map((link, i) => (
-                    <NavItem
-                        updateNavState={updateNavState}
-                        key={link}
-                        link={{name: link, i, totalLinks: links.length}}
-                    />
-                ))}
-            </ul>
-        </nav>
+                        <ul
+                            css={css`
+                                @media (min-width: 60.25em) {
+                                    display: flex;
+                                }
+                            `}>
+                            {links.map((link, i) => (
+                                <NavItem
+                                    updateNavState={updateNavState}
+                                    key={link.name}
+                                    link={{name: link.name, to: link.to, i, totalLinks: links.length}}
+                                />
+                            ))}
+                        </ul>
+                    </nav>
+                );
+            }}
+        </UserContext.Consumer>
     );
 };
 

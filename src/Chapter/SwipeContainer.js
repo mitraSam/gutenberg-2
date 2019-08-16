@@ -71,6 +71,7 @@ class SwipeContainer extends Component {
     swiping = ({deltaX}) => {
         this.setState({point: deltaX, opacity: 1 - Math.abs(deltaX) / window.innerWidth});
     };
+
     render() {
         const {point, opacity} = this.state;
         const {page, prevPage, nextPage} = this.props;

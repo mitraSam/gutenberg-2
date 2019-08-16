@@ -72,6 +72,7 @@ const setupAndRender = async () => {
 
     class App extends React.Component {
         setUser = token => {
+            if (!token) return this.setState({user: {}});
             const decodedToken = decodeToken(token);
 
             if (decodedToken) {
@@ -79,7 +80,6 @@ const setupAndRender = async () => {
 
                 return this.setState({user});
             }
-            return {};
         };
         state = {
             user: user,

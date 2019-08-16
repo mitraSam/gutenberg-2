@@ -14,3 +14,5 @@ export const userFromToken = () => {
     }
     return null;
 };
+
+export const logout = () => localStorage.removeItem('userToken');
