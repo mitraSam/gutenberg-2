@@ -23,7 +23,6 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                         const {pages, pagination} = bookChapter;
                         const pageIndex = Number(pageNr) - pagination[0];
                         useEffect(() => {
-                            console.log(bookDetails.author);
                             if (username) {
                                 bookmark({
                                     variables: {

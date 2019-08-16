@@ -69,6 +69,7 @@ const NavItem = ({link, updateNavState}) => {
                                 onClick={e => {
                                     if (link.name === 'logout') {
                                         e.preventDefault();
+                                        logout();
                                         setUser();
                                         return;
                                     }
