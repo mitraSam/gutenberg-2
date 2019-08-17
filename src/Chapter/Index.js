@@ -14,6 +14,20 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
         <div>
             <Query query={GET_READING_BOOK} variables={{title, chapterNr: chapterNr - 1}}>
                 {({data, loading}) => {
+                    useEffect(() => {
+                        if (username && !loading) {
+                            bookmark({
+                                variables: {
+                                    username,
+                                    title,
+                                    author: data.bookDetails.author,
+                                    chapterNr: Number(chapterNr),
+                                    pageNr: Number(pageNr),
+                                },
+                            }).catch(e => console.log(JSON.stringify(e)));
+                        }
+                    }, [pageNr]);
+
                     if (loading) {
                         return <PagePlaceholder />;
                     } else {
@@ -22,19 +36,7 @@ const Chapter = ({title, chapterNr, pageNr, navigate}) => {
                         const {pagesNr} = bookDetails;
                         const {pages, pagination} = bookChapter;
                         const pageIndex = Number(pageNr) - pagination[0];
-                        useEffect(() => {
-                            if (username) {
-                                bookmark({
-                                    variables: {
-                                        username,
-                                        title,
-                                        author: bookDetails.author,
-                                        chapterNr: Number(chapterNr),
-                                        pageNr: Number(pageNr),
-                                    },
-                                }).catch(e => console.log(JSON.stringify(e)));
-                            }
-                        }, [pageNr]);
+
                         return (
                             <div
                                 css={css`
