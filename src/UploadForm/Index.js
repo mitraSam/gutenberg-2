@@ -50,16 +50,11 @@ const UploadForm = () => {
                     license: Yup.string().required('Required'),
                 })}
                 initialValues={{
-                    title: 'BRAVE NEW WORLD',
-                    author: 'Aldous Huxley',
-                    source: 'https://gutenberg.ca/ebooks/huxleya-bravenewworld/huxleya-bravenewworld-00-h.html',
-                    license:
-                        'This ebook is made available at no cost and with very few restrictions. These restrictions apply only if (1) ' +
-                        'you make a change in the ebook (other than alteration for different display devices), or (2) you are making commercial use of the ebook.' +
-                        ' If either of these conditions applies, please check www.gutenberg.ca/links/licence.html before proceeding. ',
-                    credits: [
-                        'This ebook was produced by Paul Dring, Cindy Beyer, Mark Akrigg & the Online Distributed Proofreading Canada Team at http://www.pgdpcanada.net',
-                    ],
+                    title: '',
+                    author: '',
+                    source: '',
+                    license: '',
+                    credits: [''],
                 }}
                 onSubmit={(values, {setSubmitting}) => {
                     setUploading(true);

@@ -11,12 +11,12 @@ const PagePlaceholder = () => (
                 display: inline-block;
                 margin: 0 auto;
             `}>
-            <h1
+            <h2
                 css={css`
                     width: 16em;
                 `}>
                 loading
-            </h1>
+            </h2>
         </div>
     </div>
 );

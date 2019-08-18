@@ -76,13 +76,13 @@ const Details = ({title}) => {
                             <p>{license}</p>
                             <p>
                                 You can also read the original{' '}
-                                <Link
-                                    to={source}
+                                <a
+                                    href={source}
                                     css={css`
                                         border-bottom: 1px solid var(--action-color);
                                     `}>
                                     here
-                                </Link>
+                                </a>
                             </p>
                             <Subtitle text="chapters" />
 

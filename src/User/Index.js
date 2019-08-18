@@ -5,13 +5,19 @@ import {Query} from 'react-apollo';
 import {READ_BOOKS} from '../Queries';
 import {Link} from '@reach/router';
 import {css} from '@emotion/core';
+import ActionLink from '../ActionLink';
 
 const User = () => (
     <div>
         <UserContext.Consumer>
             {({user: {name}}) => {
                 return (
-                    <div>
+                    <div
+                        css={css`
+                            @media (min-width: 75em) {
+                                margin-left: 1.4em;
+                            }
+                        `}>
                         <Subtitle text="read books" />
                         {name ? (
                             <Query query={READ_BOOKS} variables={{username: name}} fetchPolicy="network-only">
@@ -24,7 +30,7 @@ const User = () => (
                                                 <h2
                                                     className="title"
                                                     css={css`
-                                                        margin-bottom: 0;
+                                                        margin: 0;
                                                     `}>
                                                     {title}
                                                 </h2>
@@ -36,39 +42,17 @@ const User = () => (
                                                     `}>
                                                     by {author}
                                                 </h2>
-                                                <h2>
-                                                    <Link
-                                                        css={css`
-                                                            border: 1px solid var(--action-color);
-                                                            border-radius: 5px;
-                                                            padding: 0.4em;
-                                                            font-family: var(--id-font);
-                                                            &:hover {
-                                                                color: #fff;
-                                                                background: var(--dark-gray);
-                                                                border-color: transparent;
-                                                            }
-                                                        `}
-                                                        to={`/${title}/${chapterNr}/${pageNr}`}>
-                                                        continue reading
-                                                    </Link>
-                                                    <Link
-                                                        css={css`
-                                                            border: 1px solid var(--action-color);
-                                                            border-radius: 5px;
-                                                            padding: 0.4em;
-                                                            font-family: var(--id-font);
-                                                            margin-left: 10px;
-                                                            &:hover {
-                                                                color: #fff;
-                                                                background: var(--dark-gray);
-                                                                border-color: transparent;
-                                                            }
-                                                        `}
-                                                        to={`/${title}`}>
-                                                        details
-                                                    </Link>
-                                                </h2>
+                                                <ActionLink
+                                                    to={`/${title}/${chapterNr}/${pageNr}`}
+                                                    text="continue reading"
+                                                />
+                                                <ActionLink
+                                                    css={css`
+                                                        margin-left: 10px;
+                                                    `}
+                                                    to={`/${title}`}
+                                                    text="details"
+                                                />
                                             </div>
                                         ))
                                     ) : (

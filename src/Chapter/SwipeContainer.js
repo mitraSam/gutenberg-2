@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ActivePage from './ActivePage';
 import InactivePage from './InactivePage';
-import DetailsContext from './DetailsContext';
+import DetailsContext from '../Contexts/DetailsContext';
 class SwipeContainer extends Component {
     state = {
         opacity: 1,

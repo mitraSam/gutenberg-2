@@ -3,6 +3,7 @@ import {css} from '@emotion/core';
 import {Query} from 'react-apollo';
 import {RECENT_BOOKS} from '../Queries';
 import Preview from '../Preview';
+import ActionLink from '../ActionLink';
 const Landing = () => (
     <div
         css={css`
@@ -16,7 +17,7 @@ const Landing = () => (
             `}>
             latest titles
         </h2>
-        <Query query={RECENT_BOOKS}>
+        <Query query={RECENT_BOOKS} fetchPolicy="network-only">
             {({data, loading}) =>
                 loading ? (
                     <h2>loading</h2>
@@ -25,6 +26,7 @@ const Landing = () => (
                 )
             }
         </Query>
+        <ActionLink to="/upload" text="upload" />
     </div>
 );
 export default Landing;

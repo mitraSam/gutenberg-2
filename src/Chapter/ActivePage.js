@@ -4,7 +4,7 @@ import {css} from '@emotion/core';
 
 import parse from 'html-react-parser';
 import Header from './Header';
-import Bookmark from './Bookmark';
+import Bookmark from '../Bookmark';
 const ActivePage = ({point, opacity, page, swipeEnd, transitionEnd, pageNr, swiping}) => {
     const [showBookmark, setBookmark] = useState(false);
     return (

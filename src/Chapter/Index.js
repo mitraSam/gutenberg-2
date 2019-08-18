@@ -5,7 +5,7 @@ import {css} from '@emotion/core';
 import Container from './SwipeContainer';
 import UserContext from '../Contexts/UserContext';
 import PagePlaceholder from './PagePlaceholder';
-import DetailsContext from './DetailsContext';
+import DetailsContext from '../Contexts/DetailsContext';
 const Chapter = ({title, chapterNr, pageNr, navigate}) => {
     let username = null;
     const [bookmark, {}] = useMutation(BOOKMARK_MUTATION);

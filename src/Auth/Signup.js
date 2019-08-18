@@ -26,8 +26,12 @@ const Signup = ({navigate}) => {
 
     return (
         <UserContext.Consumer>
-            {({setUser}) => {
+            {({setUser, user: {name}}) => {
                 logUserIn = setUser;
+                if (name) {
+                    navigate('/');
+                    return <div></div>;
+                }
                 return (
                     <Form
                         authError={authError}

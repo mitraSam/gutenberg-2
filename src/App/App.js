@@ -18,6 +18,7 @@ import Chapter from '../Chapter';
 import UploadForm from '../UploadForm';
 import User from '../User';
 import Login from '../Auth/Login';
+import About from '../About';
 import {userFromToken, decodeToken} from '../Utils';
 import UserContext from '../Contexts/UserContext';
 import Signup from '../Auth/Signup';
@@ -106,6 +107,7 @@ const setupAndRender = async () => {
                                     <Login path="login" />
                                     <Signup path="signup" />
                                     <User path="user" />
+                                    <About path="about" />
                                     <NotFound default />
                                 </Main>
                             </Router>

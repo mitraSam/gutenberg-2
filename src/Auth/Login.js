@@ -1,5 +1,6 @@
-import React, {useState, Component} from 'react';
+import React, {useState} from 'react';
 import Form from './Form';
+import ActionLink from '../ActionLink';
 import {useMutation} from '@apollo/react-hooks';
 import {LOGIN_MUTATION} from '../Queries';
 import UserContext from '../Contexts/UserContext';
@@ -26,15 +27,23 @@ const Login = ({navigate}) => {
 
     return (
         <UserContext.Consumer>
-            {({setUser}) => {
+            {({setUser, user: {name}}) => {
                 logUserIn = setUser;
+                if (name) {
+                    navigate('/');
+                    return <div></div>;
+                }
                 return (
-                    <Form
-                        authError={authError}
-                        setAuthError={setAuthError}
-                        handleFormSubmit={handleFormSubmit}
-                        title={'login'}
-                    />
+                    <div>
+                        {' '}
+                        <Form
+                            authError={authError}
+                            setAuthError={setAuthError}
+                            handleFormSubmit={handleFormSubmit}
+                            title={'login'}
+                        />
+                        <ActionLink to="/signup" text="No account? Sign up! " />
+                    </div>
                 );
             }}
         </UserContext.Consumer>
