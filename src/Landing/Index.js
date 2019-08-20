@@ -21,8 +21,10 @@ const Landing = () => (
             {({data, loading}) =>
                 loading ? (
                     <h2>loading</h2>
-                ) : (
+                ) : data ? (
                     data.recentBooks.map(book => <Preview key={book.title} title={book.title} author={book.author} />)
+                ) : (
+                    <h1>cannot connect with server</h1>
                 )
             }
         </Query>

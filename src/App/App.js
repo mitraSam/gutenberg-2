@@ -23,36 +23,10 @@ import {userFromToken, decodeToken} from '../Utils';
 import UserContext from '../Contexts/UserContext';
 import Signup from '../Auth/Signup';
 const httpLink = createUploadLink({
-    uri: 'http://localhost:3000/graphql',
+    uri: 'https://gutenbergs.xyz/graphql',
 });
 
 const cache = new InMemoryCache();
-
-const wsLink = new WebSocketLink({
-    uri: `ws://localhost:3000/graphql`,
-    options: {reconnect: true},
-});
-
-const authLink = new ApolloLink((operation, forward) => {
-    operation.setContext(context => ({
-        headers: {
-            ...context.headers,
-            authorization: localStorage.getItem('token'),
-        },
-    }));
-    return forward(operation);
-});
-
-const httpAuthLink = authLink.concat(httpLink);
-
-const link = split(
-    ({query}) => {
-        const {kind, operation} = getMainDefinition(query);
-        return kind === 'OperationDefinition' && operation === 'subscription';
-    },
-    wsLink,
-    httpAuthLink
-);
 
 const setupAndRender = async () => {
     await persistCache({
@@ -65,10 +39,8 @@ const setupAndRender = async () => {
         cache.restore(cacheData);
     }
 
-    const client = new ApolloClient({
-        cache,
-        link,
-    });
+    const client = new ApolloClient({cache, link: httpLink});
+
     const user = userFromToken() || {};
 
     class App extends React.Component {

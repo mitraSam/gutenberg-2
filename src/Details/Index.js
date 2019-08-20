@@ -29,7 +29,7 @@ const Details = ({title}) => {
                             epigraph,
                         } = bookDetails;
                     return loading ? (
-                        <h1>ladoing</h1>
+                        <h1>loading</h1>
                     ) : bookDetails ? (
                         <div>
                             <h1

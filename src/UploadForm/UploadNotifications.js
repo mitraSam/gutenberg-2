@@ -1,22 +1,8 @@
 import React, {useState} from 'react';
 import {Link} from '@reach/router';
 import {css} from '@emotion/core';
-import {useSubscription} from '@apollo/react-hooks';
-import {BOOK_UPLOAD_SUB} from '../Queries';
 
 const UploadNotifications = ({freshTitle, setUploading, uploading, setFile, handleReset, buttonStyle}) => {
-    const [uploadNotifications, updateNotifications] = useState([]);
-
-    useSubscription(BOOK_UPLOAD_SUB, {
-        onSubscriptionData: ({
-            subscriptionData: {
-                data: {
-                    uploadingBook: {message},
-                },
-            },
-        }) => updateNotifications([...uploadNotifications, message]),
-    });
-
     return (
         <div
             css={css`
@@ -34,7 +20,6 @@ const UploadNotifications = ({freshTitle, setUploading, uploading, setFile, hand
             <button
                 onClick={() => {
                     setUploading(false);
-                    updateNotifications([]);
                     setFile(null);
                     handleReset();
                 }}
@@ -46,9 +31,7 @@ const UploadNotifications = ({freshTitle, setUploading, uploading, setFile, hand
                 `}>
                 x
             </button>
-            {uploadNotifications.map(notification => (
-                <p key={notification}>{notification}</p>
-            ))}
+
             <p>
                 {freshTitle && (
                     <Link
