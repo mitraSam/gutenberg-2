@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Form from './Form';
-import ActionLink from '../ActionLink';
+import ActionLink from '../ActionLink/Index';
 import {useMutation} from '@apollo/react-hooks';
 import {LOGIN_MUTATION} from '../Queries';
 import UserContext from '../Contexts/UserContext';
