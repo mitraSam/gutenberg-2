@@ -5,7 +5,7 @@ import {Query} from 'react-apollo';
 import {READ_BOOKS} from '../Queries';
 import {Link} from '@reach/router';
 import {css} from '@emotion/core';
-import ActionLink from '../ActionLink';
+import ActionLink from '../ActionLink/Index';
 
 const User = () => (
     <div>
