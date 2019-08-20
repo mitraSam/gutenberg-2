@@ -2,7 +2,7 @@ import React from 'react';
 import {Query} from 'react-apollo';
 import {css} from '@emotion/core';
 import {SEARCH_QUERY} from '../Queries';
-import Preview from '../Preview';
+import Preview from '../Preview/Index';
 
 const Search = ({param}) => {
     return (
