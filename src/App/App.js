@@ -10,7 +10,7 @@ import '../styles/main.scss';
 import Header from '../Header/Index';
 import {userFromToken, decodeToken} from '../Utils';
 import UserContext from '../Contexts/UserContext';
-import AppRouter from '../AppRouter';
+import AppRouter from '../AppRouter/Index';
 const httpLink = createUploadLink({
     uri: 'https://gutenbergs.xyz/graphql',
 });
