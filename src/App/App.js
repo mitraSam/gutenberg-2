@@ -58,8 +58,8 @@ const setupAndRender = async () => {
                                     {props => (props.match ? '' : <Header />)}
                                 </Match>
                             </div>
+                            <AppRouter />
                         </UserContext.Provider>
-                        <AppRouter />
                     </div>
                 </ApolloProvider>
             );

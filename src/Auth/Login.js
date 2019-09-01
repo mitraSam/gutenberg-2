@@ -10,10 +10,10 @@ const Login = ({navigate}) => {
     const [authError, setAuthError] = useState(null);
     let logUserIn;
     const handleError = e => {
-        console.log(e);
         setAuthError(e.graphQLErrors[0].message);
     };
     const handleAuth = ({data: {loginUser}}) => {
+        console.log(loginUser);
         localStorage.setItem('userToken', loginUser);
         logUserIn(loginUser);
         navigate('/');
