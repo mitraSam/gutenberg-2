@@ -68,9 +68,7 @@ class SwipeContainer extends Component {
         if (pageNr === this.context.totalPages) return this.setState({point: 0, opacity: 1, swipeRight: false});
         return this.handlePageNavigation(pageNr + 1);
     };
-    swiping = ({deltaX}) => {
-        this.setState({point: deltaX, opacity: 1 - Math.abs(deltaX) / window.innerWidth});
-    };
+    swiping = ({deltaX}) => null;
 
     render() {
         const {point, opacity} = this.state;
