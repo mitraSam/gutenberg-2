@@ -1,15 +1,15 @@
 import {Router} from '@reach/router';
-import Main from '../Main';
-import Search from '../Search';
-import Landing from '../Landing';
-import Details from '../Details';
-import Chapter from '../Chapter';
-import UploadForm from '../UploadForm';
+import Main from '../Main/Index';
+import Search from '../Search/Index';
+import Landing from '../Landing/Index';
+import Details from '../Details/Index';
+import Chapter from '../Chapter/Index';
+import UploadForm from '../UploadForm/Index';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
-import User from '../User';
-import About from '../About';
-import NotFound from '../NotFound';
+import User from '../User/Index';
+import About from '../About/Index';
+import NotFound from '../NotFound/Index';
 import React from 'react';
 const AppRouter = () => (
     <Router>

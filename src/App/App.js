@@ -12,7 +12,7 @@ import {userFromToken, decodeToken} from '../Utils';
 import UserContext from '../Contexts/UserContext';
 import AppRouter from '../AppRouter';
 const httpLink = createUploadLink({
-    uri: 'http://gutenbergs.xyz/graphql',
+    uri: 'https://gutenbergs.xyz/graphql',
 });
 
 const cache = new InMemoryCache();
