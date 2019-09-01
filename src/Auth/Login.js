@@ -13,7 +13,6 @@ const Login = ({navigate}) => {
         setAuthError(e.graphQLErrors[0].message);
     };
     const handleAuth = ({data: {loginUser}}) => {
-        console.log(loginUser);
         localStorage.setItem('userToken', loginUser);
         logUserIn(loginUser);
         navigate('/');

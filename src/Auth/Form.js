@@ -80,6 +80,7 @@ const Form = ({title, authError, setAuthError, handleFormSubmit}) => (
                                     handleBlur={handleBlur}
                                     handleChange={handleChange}
                                     touched={touched}
+                                    type={fieldName === 'password' ? 'password' : null}
                                 />
                             ))}
 

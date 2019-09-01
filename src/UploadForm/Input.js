@@ -1,6 +1,6 @@
 import React from 'react';
 import {css} from '@emotion/core';
-const Input = ({errors, touched, handleChange, handleBlur, fieldName, value}) => {
+const Input = ({errors, touched, handleChange, handleBlur, fieldName, value, type}) => {
     const input = css`
         width: 100%;
         font-size: 1em;
@@ -27,7 +27,6 @@ const Input = ({errors, touched, handleChange, handleBlur, fieldName, value}) =>
                         `}
                         id={fieldName}
                         placeholder={fieldName}
-                        type="text"
                         value={value}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -40,7 +39,7 @@ const Input = ({errors, touched, handleChange, handleBlur, fieldName, value}) =>
                         `}
                         id={fieldName}
                         placeholder={fieldName}
-                        type="text"
+                        type={type ? type : 'text'}
                         value={value}
                         onChange={handleChange}
                         onBlur={handleBlur}
