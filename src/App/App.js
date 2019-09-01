@@ -1,29 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Match, Router} from '@reach/router';
+import {Match} from '@reach/router';
 import {ApolloProvider} from 'react-apollo';
 import {persistCache} from 'apollo-cache-persist';
-import {InMemoryCache, ApolloLink, ApolloClient, split} from 'apollo-boost';
-import {WebSocketLink} from 'apollo-link-ws';
-import {getMainDefinition} from 'apollo-utilities';
+import {InMemoryCache, ApolloClient} from 'apollo-boost';
+
 import {createUploadLink} from 'apollo-upload-client';
 import '../styles/main.scss';
-import Search from '../Search/Index';
 import Header from '../Header/Index';
-import NotFound from '../NotFound/Index';
-import Main from '../Main/Index';
-import Landing from '../Landing/Index';
-import Details from '../Details/Index';
-import Chapter from '../Chapter/Index';
-import UploadForm from '../UploadForm/Index';
-import User from '../User/Index';
-import Login from '../Auth/Login';
-import About from '../About/Index';
 import {userFromToken, decodeToken} from '../Utils';
 import UserContext from '../Contexts/UserContext';
-import Signup from '../Auth/Signup';
+import AppRouter from '../AppRouter';
 const httpLink = createUploadLink({
-    uri: 'https://gutenbergs.xyz/graphql',
+    uri: 'http://gutenbergs.xyz/graphql',
 });
 
 const cache = new InMemoryCache();
@@ -69,21 +58,8 @@ const setupAndRender = async () => {
                                     {props => (props.match ? '' : <Header />)}
                                 </Match>
                             </div>
-                            <Router>
-                                <Main path="/">
-                                    <Search path="/search/:param" />
-                                    <Landing path="/" />
-                                    <Details path="/:title" />
-                                    <Chapter path="/:title/:chapterNr/:pageNr" />
-                                    <UploadForm path="/upload" />
-                                    <Login path="login" />
-                                    <Signup path="signup" />
-                                    <User path="user" />
-                                    <About path="about" />
-                                    <NotFound default />
-                                </Main>
-                            </Router>
                         </UserContext.Provider>
+                        <AppRouter />
                     </div>
                 </ApolloProvider>
             );

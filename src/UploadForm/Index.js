@@ -50,11 +50,18 @@ const UploadForm = () => {
                     license: Yup.string().required('Required'),
                 })}
                 initialValues={{
-                    title: '',
-                    author: '',
-                    source: '',
-                    license: '',
-                    credits: [''],
+                    title: "Swann's Way",
+                    author: 'Marcel Proust',
+                    source: 'https://www.gutenberg.org/files/7178/7178-h/7178-h.htm',
+                    license:
+                        'This eBook is for the use of anyone anywhere at no cost and with\n' +
+                        'almost no restrictions whatsoever.  You may copy it, give it away or\n' +
+                        're-use it under the terms of the Project Gutenberg License included\n' +
+                        'with this eBook or online at www.gutenberg.org',
+                    credits: [
+                        'Produced by Eric Eldred, and David Widger',
+                        'Translated From The French By C. K. Scott Moncrieff',
+                    ],
                 }}
                 onSubmit={(values, {setSubmitting}) => {
                     setUploading(true);
@@ -63,7 +70,7 @@ const UploadForm = () => {
                             setSubmitting(false);
                             setFreshTitle(uploadBook.title);
                         })
-                        .catch(console.log);
+                        .catch(e => console.log(JSON.stringify(e)));
                 }}>
                 {props => {
                     const {
