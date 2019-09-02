@@ -26,7 +26,11 @@ const User = () => (
                                         <h2>loading</h2>
                                     ) : readBooks ? (
                                         readBooks.map(({title, author, chapterNr, pageNr}) => (
-                                            <div key={title}>
+                                            <div
+                                                key={title}
+                                                css={css`
+                                                    margin-bottom: 1em;
+                                                `}>
                                                 <h2
                                                     className="title"
                                                     css={css`
@@ -37,7 +41,7 @@ const User = () => (
 
                                                 <h2
                                                     css={css`
-                                                        margin-top: 0;
+                                                        margin: 0;
                                                         border-bottom: 1px solid var(--dark-gray);
                                                     `}>
                                                     by {author}

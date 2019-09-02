@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f90edbab-d9ae-4526-9a54-b3476682ec67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Auth/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Auth/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UploadForm/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UploadForm/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="f90edbab-d9ae-4526-9a54-b3476682ec67" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -229,31 +224,7 @@
               <item name="gutenberg" type="b2602c69:ProjectViewProjectNode" />
               <item name="gutenberg" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gutenberg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gutenberg" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AppRouter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gutenberg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gutenberg" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gutenberg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gutenberg" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Auth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gutenberg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gutenberg" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="UploadForm" type="462c0819:PsiDirectoryNode" />
+              <item name="Preview" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -360,11 +331,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="287654000" />
+    <option name="totallyTimeSpent" value="288246000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1618" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19177215" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

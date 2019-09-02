@@ -67,6 +67,7 @@ const NavItem = ({link, updateNavState}) => {
                                 onFocus={() => updateLinkState(true)}
                                 onBlur={() => updateLinkState(false)}
                                 onClick={e => {
+                                    updateNavState(false);
                                     if (link.name === 'logout') {
                                         e.preventDefault();
                                         logout();
